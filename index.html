@@ -34,27 +34,11 @@
         .animated-gradient {
             background: linear-gradient(-45deg, #4f46e5, #7c3aed, #2563eb, #8b5cf6);
             background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
+            /* MODIFIED: Animation is now faster (8s instead of 15s) */
+            animation: gradient-animation 8s ease infinite;
         }
 
-        /* NEW: Keyframe for subtle zoom effect */
-        @keyframes subtle-zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-
-        /* NEW: Image overlay style */
-        .animated-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://i.postimg.cc/MKv2m74Z/top-mountain-view-1.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.15;
-            animation: subtle-zoom 30s linear infinite alternate;
-            z-index: 0;
-        }
+        /* REMOVED: The ::before pseudo-element for the image overlay has been removed */
 
         /* Button Hover Effect */
         .btn-hover {
@@ -943,3 +927,4 @@
     </script>
 </body>
 </html>
+
