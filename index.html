@@ -37,6 +37,25 @@
             animation: gradient-animation 15s ease infinite;
         }
 
+        /* NEW: Keyframe for subtle zoom effect */
+        @keyframes subtle-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* NEW: Image overlay style */
+        .animated-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://i.postimg.cc/MKv2m74Z/top-mountain-view-1.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            animation: subtle-zoom 30s linear infinite alternate;
+            z-index: 0;
+        }
+
         /* Button Hover Effect */
         .btn-hover {
             transition: all 0.2s ease-in-out;
@@ -120,15 +139,16 @@
     <!-- =================================================================== -->
     <div id="public-view">
         <!-- Hero Section -->
-        <header class="relative min-h-screen flex flex-col items-center justify-center text-white p-6 animated-gradient">
+        <header class="relative min-h-screen flex flex-col items-center justify-center text-white p-6 animated-gradient overflow-hidden">
             <!-- Admin Access Icon -->
-            <div class="absolute top-6 right-6">
+            <div class="absolute top-6 right-6 z-10">
                 <button id="open-admin-login-btn" class="p-2 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors" aria-label="Acessar painel do administrador">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0-2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
                 </button>
             </div>
 
-            <div class="text-center max-w-4xl">
+            <div class="relative text-center max-w-4xl z-10">
+                <img src="https://i.postimg.cc/zGVMTqyy/Logo-Evereste-Branco-maior2-1.png" alt="Logo Instituto Evereste" class="mx-auto h-12 mb-8">
                 <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">Sua opinião constrói o futuro do Evereste</h1>
                 <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
                     Seja para avaliar um atendimento ou para celebrar uma conquista, seu feedback é a nossa maior inspiração.
@@ -153,7 +173,16 @@
                     <a href="#" target="_blank" class="hover:text-white transition-colors" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
                     <a href="#" target="_blank" class="hover:text-white transition-colors" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></a>
                 </div>
-                <p class="text-sm">&copy; 2024 Instituto Evereste. Todos os direitos reservados.</p>
+                <!-- LGPD Links -->
+                <div class="mt-6 text-xs space-y-2">
+                    <p>
+                        <a href="https://www.evereste.org.br/images/2024/Termo%20de%20Privacidade%201.pdf" target="_blank" class="hover:text-white underline">Política de Privacidade</a>
+                    </p>
+                    <p>
+                        Para solicitar a exclusão ou alteração das suas respostas, contate o DPO: <a href="mailto:dpo@evereste.org.br" class="hover:text-white underline">dpo@evereste.org.br</a>
+                    </p>
+                </div>
+                <p class="text-sm mt-6">&copy; 2024 Instituto Evereste. Todos os direitos reservados.</p>
             </div>
         </footer>
     </div>
@@ -253,6 +282,10 @@
                 <p class="text-slate-500">Sua perspectiva é fundamental para nosso crescimento.</p>
             </div>
             <div class="p-6 space-y-6">
+                <!-- LGPD Notice -->
+                <div class="bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-r-lg">
+                    <p class="text-sm"><strong>Aviso de Privacidade:</strong> Seus dados serão utilizados exclusivamente para avaliar a qualidade dos eventos realizados, com base no interesse legítimo da instituição, sendo armazenados por 12 meses. <a href="https://www.evereste.org.br/images/2024/Termo%20de%20Privacidade%201.pdf" target="_blank" class="font-semibold underline">Leia nossa Política de Privacidade</a>.</p>
+                </div>
                 <!-- Profile -->
                 <div>
                     <label class="font-semibold text-slate-700 block mb-2">1. Qual seu perfil de visitante? <span class="text-red-500">*</span></label>
@@ -307,6 +340,10 @@
                 <p class="text-slate-500">Reconheça quem fez a diferença na sua experiência.</p>
             </div>
             <div class="p-6 space-y-4">
+                 <!-- LGPD Notice -->
+                 <div class="bg-blue-50 border-l-4 border-blue-400 text-blue-800 p-4 rounded-r-lg">
+                    <p class="text-sm"><strong>Aviso de Privacidade:</strong> Seus dados serão utilizados exclusivamente para registrar o reconhecimento, com base no interesse legítimo da instituição, sendo armazenados por 12 meses. <a href="https://www.evereste.org.br/images/2024/Termo%20de%20Privacidade%201.pdf" target="_blank" class="font-semibold underline">Leia nossa Política de Privacidade</a>.</p>
+                </div>
                 <div>
                     <label for="praise-recipient" class="font-semibold text-slate-700 block mb-1">Para quem é o elogio? <span class="text-red-500">*</span></label>
                     <input type="text" id="praise-recipient" name="recipient" required class="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Nome do colaborador ou equipe">
@@ -323,6 +360,13 @@
                     <label for="praise-author" class="font-semibold text-slate-700 block mb-1">Seu nome (Opcional)</label>
                     <input type="text" id="praise-author" name="author" class="w-full p-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Deixe em branco para enviar anonimamente">
                 </div>
+                <!-- LGPD Consent Checkbox -->
+                <div>
+                    <label class="flex items-start space-x-2 cursor-pointer mt-2">
+                        <input type="checkbox" id="praise-consent" name="consent" class="h-4 w-4 rounded text-indigo-600 focus:ring-indigo-500 border-slate-300 mt-1 flex-shrink-0">
+                        <span class="text-slate-600 text-sm">Concordo que meus dados de identificação (quando informados) sejam utilizados pela instituição para eventuais retornos relacionados a esta pesquisa.</span>
+                    </label>
+                </div>
             </div>
             <div class="p-6 bg-slate-50 flex items-center justify-end gap-4 rounded-b-lg">
                 <button type="button" class="close-modal-btn font-semibold text-slate-600 hover:text-slate-800">Cancelar</button>
@@ -334,15 +378,17 @@
     <!-- Modal: Thank You / LGPD -->
     <div id="thank-you-modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
         <div class="modal-popup bg-white rounded-lg shadow-2xl w-full max-w-md text-center p-8">
-            <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
-                <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
             </div>
-            <h2 class="text-2xl font-bold text-slate-800">Sua opinião foi enviada!</h2>
-            <p class="text-slate-600 mt-2 mb-4">Agradecemos por dedicar seu tempo para nos avaliar. Seu feedback é muito valioso.</p>
-            <p class="text-xs text-slate-400">
-                <strong>Aviso de Privacidade (LGPD):</strong> Seus dados são coletados de forma anônima e utilizados exclusivamente para fins estatísticos de melhoria interna. Não compartilhamos suas respostas individuais.
-            </p>
-            <button class="close-modal-btn mt-6 w-full bg-indigo-600 text-white font-bold px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors">Fechar</button>
+            <h2 class="text-2xl font-bold text-slate-800">Envio Confirmado!</h2>
+            <p class="text-slate-600 mt-2 mb-6">Agradecemos sua contribuição. Suas respostas foram registradas.</p>
+            <div class="text-left bg-slate-50 p-4 rounded-lg border text-sm text-slate-500">
+                <p><strong>Conformidade LGPD:</strong> Suas respostas são tratadas de forma segura e utilizadas exclusivamente para fins de melhoria interna. Para exercer seus direitos, como a alteração ou exclusão dos dados, contate nosso DPO em <a href="mailto:dpo@evereste.org.br" class="underline font-medium text-blue-600 hover:text-blue-800">dpo@evereste.org.br</a>.</p>
+            </div>
+            <button class="close-modal-btn mt-8 w-full bg-indigo-600 text-white font-bold px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors">Fechar</button>
         </div>
     </div>
     
@@ -578,6 +624,7 @@
                     department: document.getElementById('praise-department').value.trim(),
                     reason: document.getElementById('praise-reason').value.trim(),
                     author: document.getElementById('praise-author').value.trim() || "Anônimo",
+                    consent: document.getElementById('praise-consent').checked,
                     createdAt: serverTimestamp()
                 };
 
